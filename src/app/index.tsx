@@ -2,13 +2,19 @@ import { View, Text } from 'react-native'
 import { Welcome } from '@/components/welcome'
 import { Steps } from '@/components/steps'
 import { Button } from '@/components/button'
-import { IconMathFunctionY } from '@tabler/icons-react-native'
+import { router } from 'expo-router'
+
 export default function Index() {
   return (
     <View style={{ flex: 1, padding: 40, gap: 40 }}>
       <Welcome />
       <Steps />
-      <Button activeOpacity={0.7}>
+      <Button
+        onPress={() => {
+          router.navigate('/home')
+        }}
+        activeOpacity={0.7}
+      >
         <Button.Title>Começar</Button.Title>
       </Button>
     </View>
