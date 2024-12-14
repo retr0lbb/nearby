@@ -28,7 +28,9 @@ export function Place({ data, ...rest }: Props) {
       <Image style={S.image} source={{ uri: data.cover }} />
       <View style={S.content}>
         <Text style={S.name}>{data.name}</Text>
-        <Text style={S.description}>{data.description}</Text>
+        <Text style={S.description} numberOfLines={2}>
+          {data.description}
+        </Text>
 
         <View style={S.footer}>
           <IconTicket size={16} color={colors.red.base} />
