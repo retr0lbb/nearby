@@ -1,4 +1,4 @@
-import { Alert, Text, View, Modal } from 'react-native'
+import { Alert, Text, View, Modal, StatusBar, ScrollView } from 'react-native'
 import { router, useLocalSearchParams, Redirect } from 'expo-router'
 import { api } from '@/services/api'
 import { Loading } from '@/components/loading'
@@ -98,10 +98,14 @@ export default function Market() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Cover uri={marketData.cover} />
-      <Details data={marketData} />
+      <StatusBar barStyle={'light-content'} hidden={isModalOpen} />
 
-      {coupon !== null && <Coupon code={coupon} />}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Cover uri={marketData.cover} />
+        <Details data={marketData} />
+        {coupon !== null && <Coupon code={coupon} />}
+      </ScrollView>
+
       <View style={{ padding: 32, flex: 1, justifyContent: 'flex-end' }}>
         <Button onPress={handleOpenModalCamera}>
           <Button.Title>Ler QR Code</Button.Title>
