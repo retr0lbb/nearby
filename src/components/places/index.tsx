@@ -13,6 +13,7 @@ import type { IconProps as TablerIconProps } from '@tabler/icons-react-native'
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet'
 import { type PlaceProps, Place } from '../place'
 import { useRef } from 'react'
+import { router } from 'expo-router'
 
 interface PlacesProps {
   data: PlaceProps[]
@@ -36,7 +37,12 @@ export function Places({ data }: PlacesProps) {
       <BottomSheetFlatList
         data={data}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <Place data={item} />}
+        renderItem={({ item }) => (
+          <Place
+            data={item}
+            onPress={() => router.navigate(`/market/${item.id}`)}
+          />
+        )}
         contentContainerStyle={S.content}
         ListHeaderComponent={() => (
           <Text style={S.title}>Explore locais perto de você</Text>
